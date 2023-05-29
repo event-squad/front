@@ -2,8 +2,8 @@
 
 import { FormControl, TextField, Button, IconButton, InputAdornment } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material"
-import Link from "next/link";
 import { useState } from "react";
+import Link from "next/link";
 
 const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -14,7 +14,7 @@ const LoginForm = () => {
 
   return (
     <div className="flex flex-col">
-      <FormControl className="md:w-96 mx-auto w-11/12 rounded-lg p-5 bg-[#613a37]">
+      <FormControl className="md:w-96 mx-auto w-11/12 rounded-lg p-5 bg-[#5F4844]">
         <TextField
           id="outlined-basic"
           placeholder="Email"
