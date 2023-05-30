@@ -1,14 +1,15 @@
 "use client";
 
-import { Alert, AlertDescription, AlertTitle } from "@/app/components/ui/alert";
-import { Terminal } from "lucide-react";
 import { useState } from "react";
 import SignUp from "./signup";
 import Auth from "@/app/api/auth/login";
+import AlertComponent from "@/app/components/ui/alertComponent";
+import { useRouter } from "next/navigation";
 
 const Page = () => {
   const [disabled, setDisabled] = useState(true);
   const [alert, setAlert] = useState(false);
+  const route = useRouter();
 
   if (alert) {
     setTimeout(() => {
@@ -26,15 +27,22 @@ const Page = () => {
       return;
     }
 
-    const user = {
-      name: e.target.nome.value,
-      email: e.target.email.value,
-      password: e.target.password.value,
-    };
+    try {
+      const user = {
+        name: e.target.nome.value,
+        email: e.target.email.value,
+        password: e.target.password.value,
+      };
 
-    const response = await Auth.SignUp(user)
-    console.log(response)
-    return response;
+      const response = await Auth.SignUp(user);
+
+      if (response.status === 409 || response.status === 404) throw new ErrorEvent("error");
+
+      return route.push("/auth/signin");
+    } catch (err: any) {
+      setAlert(true)
+      console.log(err)
+    }
   };
 
   const handlePasswordType = () => {
@@ -46,16 +54,11 @@ const Page = () => {
       <h1 className="font-extrabold text-white m-3 text-2xl -ml-24">
         Cadastrar-se
       </h1>
-
-      <Alert
-        className={`transition-all ${
-          alert ? "top-0 animate-slide-down" : "-top-96  animate-slide-up"
-        } delay-0 animate-bounce absolute bg-[#614946] text-white border-none right-0 m-6 w-auto h-auto fade-out-5`}
-      >
-        <Terminal />
-        <AlertTitle>Aconteceu algo!</AlertTitle>
-        <AlertDescription>Verifique suas credenciais.</AlertDescription>
-      </Alert>
+      <AlertComponent
+        alert={alert}
+        mainText="Houve um erro!"
+        description="Verifique suas credenciais."
+      />
       <SignUp
         handleSubmit={handleSubmit}
         disabled={disabled}
