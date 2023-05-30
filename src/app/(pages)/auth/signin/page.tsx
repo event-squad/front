@@ -1,8 +1,8 @@
 "use client";
 
+import Auth from "@/app/api/auth/login";
 import { useState } from "react";
 import Login from "./login";
-import Auth from "@/app/api/login";
 
 const Page = () => {
   const [disabled, setDisabled] = useState(true);
@@ -16,7 +16,7 @@ const Page = () => {
 
     const response = await Auth.Login(user);
 
-    console.log(response);
+    console.log(await response.text());
   };
 
   const handlePasswordType = () => {

@@ -1,10 +1,10 @@
 "use client";
 
-import Auth from "@/app/api/login";
-import SignUp from "./signup";
-import { useState } from "react";
 import { Alert, AlertDescription, AlertTitle } from "@/app/components/ui/alert";
 import { Terminal } from "lucide-react";
+import { useState } from "react";
+import SignUp from "./signup";
+import Auth from "@/app/api/auth/login";
 
 const Page = () => {
   const [disabled, setDisabled] = useState(true);
@@ -31,6 +31,10 @@ const Page = () => {
       email: e.target.email.value,
       password: e.target.password.value,
     };
+
+    const response = await Auth.SignUp(user)
+    console.log(response)
+    return response;
   };
 
   const handlePasswordType = () => {
@@ -49,8 +53,8 @@ const Page = () => {
         } delay-0 animate-bounce absolute bg-[#614946] text-white border-none right-0 m-6 w-auto h-auto fade-out-5`}
       >
         <Terminal />
-        <AlertTitle>Senhas não coincidem!</AlertTitle>
-        <AlertDescription>Verifique suas senhas.</AlertDescription>
+        <AlertTitle>Aconteceu algo!</AlertTitle>
+        <AlertDescription>Verifique suas credenciais.</AlertDescription>
       </Alert>
       <SignUp
         handleSubmit={handleSubmit}
