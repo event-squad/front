@@ -86,3 +86,9 @@
     #2E1D18 100%);
   }
 }
+
+.shadow-perso {
+  -webkit-box-shadow: 0px 0px 42px -10px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 0px 42px -10px rgba(0,0,0,0.75);
+box-shadow: 0px 0px 42px -10px rgba(0,0,0,0.75);
+}

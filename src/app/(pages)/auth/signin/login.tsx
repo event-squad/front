@@ -20,7 +20,7 @@ export default function Login({
     <div
       className="flex items-center flex-col
       bg-[#614946] rounded-lg border-solid
-      w-72 h-auto p-5"
+      w-72 h-auto p-5 shadow-perso"
     >
       <form onSubmit={(e) => handleSubmit(e)}>
         <Input
