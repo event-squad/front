@@ -1,4 +1,5 @@
-import IconFlashOutline from "@/app/components/ui/flash";
+import CarouselIcon from "@/app/components/carouselIcon";
+import IconFlashOutline from "@/app/components/icons/flash";
 
 const Carousel = () => {
   return (
@@ -9,31 +10,12 @@ const Carousel = () => {
 
       <div className="flex overflow-y-scroll scrollbar-hide">
 
-        <div className="box-border flex mr-4 mt-2 justify-between items-center w-auto rounded-full h-14 bg-red-500">
-          <div className="flex justify-center items-center ml-2 bg-white rounded-full w-10 h-10">
-            <IconFlashOutline className="text-3xl" />
-          </div>
-          <h1 className="text-lg text-white font-extrabold mx-3">Feed</h1>
-        </div>
-        <div className="box-border flex mr-4 mt-2 justify-between items-center w-auto rounded-full h-14 bg-red-500">
-          <div className="flex justify-center items-center ml-2 bg-white rounded-full w-10 h-10">
-            <IconFlashOutline className="text-3xl" />
-          </div>
-          <h1 className="text-lg text-white font-extrabold mx-3">Feed</h1>
-        </div>
-        <div className="box-border flex mr-4 mt-2 justify-between items-center w-auto rounded-full h-14 bg-red-500">
-          <div className="flex justify-center items-center ml-2 bg-white rounded-full w-10 h-10">
-            <IconFlashOutline className="text-3xl" />
-          </div>
-          <h1 className="text-lg text-white font-extrabold mx-3">Feed</h1>
-        </div>
-        <div className="box-border flex mr-4 mt-2 justify-between items-center w-auto rounded-full h-14 bg-red-500">
-          <div className="flex justify-center items-center ml-2 bg-white rounded-full w-10 h-10">
-            <IconFlashOutline className="text-3xl" />
-          </div>
-          <h1 className="text-lg text-white font-extrabold mx-3">Feed</h1>
-        </div>
-        
+        <CarouselIcon text="Feed" icon={<IconFlashOutline className="text-3xl" />} />
+        <CarouselIcon text="Feed" icon={<IconFlashOutline className="text-3xl" />} />
+        <CarouselIcon text="Feed" icon={<IconFlashOutline className="text-3xl" />} />
+        <CarouselIcon text="Feed" icon={<IconFlashOutline className="text-3xl" />} />
+        <CarouselIcon text="Feed" icon={<IconFlashOutline className="text-3xl" />} />
+
       </div>
     </div>
   );

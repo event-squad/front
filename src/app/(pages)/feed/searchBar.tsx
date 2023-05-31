@@ -1,6 +1,6 @@
+import IconSide_menu from "@/app/components/icons/menu";
+import IconSearch from "@/app/components/icons/search";
 import { Input } from "@/app/components/ui/input";
-import IconSide_menu from "@/app/components/ui/menu";
-import IconSearch from "@/app/components/ui/search";
 
 const SearchBar = () => {
   return (

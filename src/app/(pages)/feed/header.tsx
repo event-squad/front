@@ -1,6 +1,6 @@
 import mapSvg from "@/../public/images/map-marker-svgrepo-com.svg";
 import profile from "@/../public/images/profile-picture.webp";
-import IconMenuLeft from "@/app/components/ui/bars";
+import IconMenuLeft from "@/app/components/icons/bars";
 import Img from "next/image";
 
 const Header = () => {

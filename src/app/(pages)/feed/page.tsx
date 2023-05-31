@@ -1,18 +1,36 @@
+"use client";
+
 import Carousel from "./carousel";
-import Footer from "./footer";
+import Footer from "../../components/footer";
 import Header from "./header";
 import SearchBar from "./searchBar";
+import { useRouter } from "next/navigation";
 
 const Page = () => {
- return(
-  <div className="px-6">
-   <Header />
-   <SearchBar />
-   <Carousel />
-   <Footer />
-  </div>
- )
-}
+  const redirect = useRouter();
+  
+  const handleClick = (e: any) => {
+   const path = e.target.id;
+   switch(path) {
+    case "home":
+     return redirect.push('/feed');
+    case "map":
+     return redirect.push('/map');
+    case "heart":
+     return redirect.push('/feed');
+    case "user":
+     return redirect.push('/feed');
+   }
+  };
+
+  return (
+    <div className="px-6">
+      <Header />
+      <SearchBar />
+      <Carousel />
+      <Footer active={"home"} handleClick={handleClick} />
+    </div>
+  );
+};
 
 export default Page;
-
