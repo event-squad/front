@@ -8,44 +8,33 @@ const Carousel = () => {
       </h1>
 
       <div className="flex overflow-y-scroll scrollbar-hide">
-       <div className="flex mr-4 mt-2 justify-between items-center w-28 rounded-full h-14 bg-red-500">
-         <div className="flex justify-center items-center ml-2 bg-white rounded-full w-10 h-10">
-           <IconFlashOutline className="text-3xl" />
-         </div>
-         <h1 className="text-lg text-white font-extrabold mr-4">feed</h1>
-       </div>
-       <div className="flex mr-4 mt-2 justify-between items-center w-28 rounded-full h-14 bg-red-500">
-         <div className="flex justify-center items-center ml-2 bg-white rounded-full w-10 h-10">
-           <IconFlashOutline className="text-3xl" />
-         </div>
-         <h1 className="text-lg text-white font-extrabold mr-4">feed</h1>
-       </div>
-       <div className="flex mr-4 mt-2 justify-between items-center w-28 rounded-full h-14 bg-red-500">
-         <div className="flex justify-center items-center ml-2 bg-white rounded-full w-10 h-10">
-           <IconFlashOutline className="text-3xl" />
-         </div>
-         <h1 className="text-lg text-white font-extrabold mr-4">feed</h1>
-       </div>
-       <div className="flex mr-4 mt-2 justify-between items-center w-28 rounded-full h-14 bg-red-500">
-         <div className="flex justify-center items-center ml-2 bg-white rounded-full w-10 h-10">
-           <IconFlashOutline className="text-3xl" />
-         </div>
-         <h1 className="text-lg text-white font-extrabold mr-4">feed</h1>
-       </div>
-       <div className="flex mr-4 mt-2 justify-between items-center w-28 rounded-full h-14 bg-red-500">
-         <div className="flex justify-center items-center ml-2 bg-white rounded-full w-10 h-10">
-           <IconFlashOutline className="text-3xl" />
-         </div>
-         <h1 className="text-lg text-white font-extrabold mr-4">feed</h1>
-       </div>
-       <div className="flex mr-4 mt-2 justify-between items-center w-28 rounded-full h-14 bg-red-500">
-         <div className="flex justify-center items-center ml-2 bg-white rounded-full w-10 h-10">
-           <IconFlashOutline className="text-3xl" />
-         </div>
-         <h1 className="text-lg text-white font-extrabold mr-4">feed</h1>
-       </div>
-      </div>
 
+        <div className="box-border flex mr-4 mt-2 justify-between items-center w-auto rounded-full h-14 bg-red-500">
+          <div className="flex justify-center items-center ml-2 bg-white rounded-full w-10 h-10">
+            <IconFlashOutline className="text-3xl" />
+          </div>
+          <h1 className="text-lg text-white font-extrabold mx-3">Feed</h1>
+        </div>
+        <div className="box-border flex mr-4 mt-2 justify-between items-center w-auto rounded-full h-14 bg-red-500">
+          <div className="flex justify-center items-center ml-2 bg-white rounded-full w-10 h-10">
+            <IconFlashOutline className="text-3xl" />
+          </div>
+          <h1 className="text-lg text-white font-extrabold mx-3">Feed</h1>
+        </div>
+        <div className="box-border flex mr-4 mt-2 justify-between items-center w-auto rounded-full h-14 bg-red-500">
+          <div className="flex justify-center items-center ml-2 bg-white rounded-full w-10 h-10">
+            <IconFlashOutline className="text-3xl" />
+          </div>
+          <h1 className="text-lg text-white font-extrabold mx-3">Feed</h1>
+        </div>
+        <div className="box-border flex mr-4 mt-2 justify-between items-center w-auto rounded-full h-14 bg-red-500">
+          <div className="flex justify-center items-center ml-2 bg-white rounded-full w-10 h-10">
+            <IconFlashOutline className="text-3xl" />
+          </div>
+          <h1 className="text-lg text-white font-extrabold mx-3">Feed</h1>
+        </div>
+        
+      </div>
     </div>
   );
 };
