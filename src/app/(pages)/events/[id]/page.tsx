@@ -1,6 +1,6 @@
 import eventMockData from "./eventMockData";
 
-export function getEventData(id: string) {
+function getEventData(id: string) {
 
     const event = eventMockData.filter((i) => i.id === Number(id));
     return event[0];
