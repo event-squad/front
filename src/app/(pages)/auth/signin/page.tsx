@@ -3,7 +3,7 @@
 import Auth from "@/app/api/auth/login";
 import AlertComponent from "@/app/components/ui/alertComponent";
 import { useState } from "react";
-import Login from "./login";
+import Login from "./signin";
 import { useRouter } from "next/navigation";
 
 const Page = () => {

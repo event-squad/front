@@ -1,7 +1,15 @@
+import Carousel from "./carousel";
+import Header from "./header";
+import SearchBar from "./searchBar";
+
 const Page = () => {
  return(
-  <div>
-   <h1>feedPage</h1>
+  <div
+   className="px-6"
+  >
+   <Header />
+   <SearchBar />
+   <Carousel />
   </div>
  )
 }

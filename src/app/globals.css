@@ -92,3 +92,12 @@
 -moz-box-shadow: 0px 0px 42px -10px rgba(0,0,0,0.75);
 box-shadow: 0px 0px 42px -10px rgba(0,0,0,0.75);
 }
+
+.main-bg {
+  background-color: #683B34;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
