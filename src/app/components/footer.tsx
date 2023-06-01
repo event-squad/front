@@ -11,7 +11,7 @@ import IconUser from "@/app/components/icons/user";
 const Footer = ({ active, handleClick }: Props) => {
  return(
   <div
-   className="flex justify-around items-center w-screen h-24 fixed left-0 bottom-0 bg-black bg-opacity-30"
+   className="flex justify-around items-center w-screen h-24 fixed left-0 bottom-0 footer-bg"
   >
    <div onClick={handleClick} id='home' className={`cursor-pointer flex justify-center items-center w-14 h-14 rounded-full ${active === "home" && "bg-white"}`}>
     <IconHome16 id='home' className={`text-3xl ${active === "home" ? "text-red-500" : "text-white"}`} />

@@ -5,6 +5,7 @@ import Footer from "../../components/footer";
 import Header from "./header";
 import SearchBar from "./searchBar";
 import { useRouter } from "next/navigation";
+import Feed from "./feed";
 
 const Page = () => {
   const redirect = useRouter();
@@ -28,6 +29,7 @@ const Page = () => {
       <Header />
       <SearchBar />
       <Carousel />
+      <Feed />
       <Footer active={"home"} handleClick={handleClick} />
     </div>
   );
