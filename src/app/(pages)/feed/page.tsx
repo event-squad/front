@@ -6,10 +6,12 @@ import Header from "./header";
 import SearchBar from "./searchBar";
 import { useRouter } from "next/navigation";
 import Feed from "./feed";
+import { useState } from "react";
 
 const Page = () => {
   const redirect = useRouter();
-  
+  const [filter, setFilter] = useState("");
+
   const handleClick = (e: any) => {
    const path = e.target.id;
    switch(path) {
@@ -24,11 +26,19 @@ const Page = () => {
    }
   };
 
+  const handleFilter = (text: any) => {
+    if (text === filter) {
+      setFilter("");
+      return;
+    }
+    setFilter(text);
+  }
+
   return (
     <div className="px-6">
       <Header />
       <SearchBar />
-      <Carousel />
+      <Carousel filter={filter} handleFilter={handleFilter} />
       <Feed />
       <Footer active={"home"} handleClick={handleClick} />
     </div>
