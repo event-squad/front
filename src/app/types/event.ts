@@ -4,6 +4,9 @@ export type eventDetails = {
  description: string;
  status: number | Date;
  endDate: Date;
+ price: string;
+ city: string;
+ state: string;
  createdAt: Date;
  startDate: Date;
  updatedAt: Date;
