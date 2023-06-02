@@ -7,7 +7,7 @@ type Props = {
 
 const CarouselIcon = ({ filter, handleFilter, text, icon }: Props) => {
   return (
-    <button
+    <div
       onClick={() => handleFilter(text)}
       className={`box-border flex mr-4 mt-2 justify-between items-center w-auto rounded-full h-14 ${
         filter === text ? "bg-red-500" : "bg-[#613D37]"
@@ -17,7 +17,7 @@ const CarouselIcon = ({ filter, handleFilter, text, icon }: Props) => {
         {icon}
       </div>
       <h1 className="text-lg text-white font-extrabold mx-3">{text}</h1>
-    </button>
+    </div>
   );
 };
 

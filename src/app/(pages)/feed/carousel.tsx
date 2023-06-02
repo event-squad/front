@@ -14,7 +14,7 @@ const Carousel = ({ filter, handleFilter }: Props) => {
       <h1 className="text-white font-extrabold text-md px-1">
         Próximos eventos
       </h1>
-      <div className="flex overflow-y-scroll scrollbar-hide">
+      <div className="scrollbar-hide no-scrollbar flex overflow-y-scroll scrollbar-hide">
         <CarouselIcon
           filter={filter}
           handleFilter={handleFilter}

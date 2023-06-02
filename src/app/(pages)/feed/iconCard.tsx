@@ -1,9 +1,15 @@
-import Image from "next/image";
-import showImage from "@/../public/images/showImage.png";
+type Props = {
+  handleEvent: (e: any) => void;
+  event: eventDetails;
+};
 
-const IconCard = () => {
+import Image from "next/image";
+import showImage from "@/../public/images/showImage.jpg";
+import { eventDetails } from "@/app/types/event";
+
+const IconCard = ({ handleEvent, event }: Props) => {
   return (
-    <div className="relative w-80 h-64 bg-red-500 border-radius-feed overflow-hidden">
+    <div onClick={handleEvent} className="cursor-pointer border-solid border-black border-2 relative w-80 h-64  border-radius-feed overflow-hidden">
       <div className="absolute flex justify-center items-center m-5 w-14 rounded-md h-8 opacity-feed">
         <h1 className="text-xs text-white font-extrabold">25 Mai</h1>
       </div>
