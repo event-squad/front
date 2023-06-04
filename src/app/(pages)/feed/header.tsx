@@ -6,8 +6,8 @@ import Img from "next/image";
 const Header = () => {
   return (
     <div className="flex items-center justify-between mt-4">
-      <div className="flex justify-center items-center text-white text-2xl w-12 h-12 main-bg rounded-full">
-        <IconMenuLeft className="cursor-pointer" />
+      <div className="flex cursor-pointer justify-center items-center text-white text-2xl w-12 h-12 main-bg rounded-full">
+        <IconMenuLeft />
       </div>
       <div className="flex">
         <Img className="w-4 mr-1" src={mapSvg} alt="map_svg" />

@@ -4,22 +4,23 @@ import Carousel from "./carousel";
 import Footer from "../../components/footer";
 import Header from "./header";
 import SearchBar from "./searchBar";
-import { useRouter } from "next/navigation";
 import Feed from "./feed";
-import { useEffect, useState } from "react";
 import Events from "@/app/api/events/events";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { eventDetails } from "@/app/types/event";
 
 const Page = () => {
   const redirect = useRouter();
   const [filter, setFilter] = useState("");
-  const [events, setEvents] = useState();
+  const [events, setEvents] = useState<eventDetails[]>();
 
   useEffect(() => {
     const event = Events.getEvents();
 
     event
       .then(async (res) => {
-        setEvents(await res.json());
+        setEvents(res);
       })
       .catch((err) => {
         console.log(err);
@@ -49,8 +50,10 @@ const Page = () => {
     setFilter(text);
   };
 
-  const handleEvent = (e: any) => {
-    // console.log(e);
+  const handleEvent = async (idReceived: number) => {
+    const { id } = await Events.getEventById(idReceived);
+
+    return redirect.push(`/events/${id}`);
   };
 
   return (

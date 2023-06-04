@@ -8,15 +8,15 @@ import showImage from "@/../public/images/showImage.jpg";
 import { eventDetails } from "@/app/types/event";
 
 const IconCard = ({ handleEvent, event }: Props) => {
-  console.log(event)
   const date = event.startDate.toString().split("T")[0]
 
   return (
-    <div onClick={handleEvent} className="cursor-pointer border-solid border-black border-2 relative w-80 h-64  border-radius-feed overflow-hidden">
+    <div onClick={() => handleEvent(event.id)} className="cursor-pointer relative w-80 h-64 border-radius-feed overflow-hidden">
       <div className="absolute flex justify-center items-center m-5 w-auto rounded-md h-8 opacity-feed">
         <h1 className="text-xs text-white font-extrabold px-2">{date}</h1>
       </div>
       <Image
+        priority={true}
         className="z-0 object-cover w-full h-full"
         src={showImage}
         alt="show_image"
