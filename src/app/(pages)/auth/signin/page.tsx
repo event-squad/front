@@ -2,8 +2,8 @@
 
 import Auth from "@/app/api/auth/login";
 import AlertComponent from "@/app/components/ui/alertComponent";
-import { useState } from "react";
 import Login from "./signin";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 const Page = () => {
@@ -25,15 +25,11 @@ const Page = () => {
     try {
       const response = await Auth.Login(user);
 
-      if (response.status === 409 || response.status === 404) {
-        console.log("error")
-        throw new ErrorEvent("error");
-      }
+      if (response.status === 409 || response.status === 404) throw new ErrorEvent("error");
 
       localStorage.setItem('token', await response.text());
-      return route.push("/");
+      return route.push("/feed");
     } catch (err: any) {
-      console.log(err);
       setAlert(true);
       e.target.email.value = "";
       e.target.password.value = "";
