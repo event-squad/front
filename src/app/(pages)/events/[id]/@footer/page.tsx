@@ -1,12 +1,16 @@
-type Props = {
- active: boolean;
- handleActive: () => void;
-};
+'use client';
 
 import IconHeart from "@/app/components/icons/heart";
 import IconHeartFilled from "@/app/components/icons/heartFilled";
+import { useState } from "react";
 
-const Footer = ({ active, handleActive }: Props) => {
+const Footer = async ({ params }: any) => {
+  const [active, setActive] = useState(false);
+
+  const handleActive = () => {
+    setActive(!active);
+  };
+
   return (
     <div className="flex justify-around items-center absolute bottom-0 bg-gradient-to-b from-transparent via-rgba(30, 12, 7, 0.8) to-black w-full h-32">
       <button onClick={handleActive} className="flex justify-center items-center pt-1 rounded-full w-20 h-20 bg-[#FFFFFF33] text-red">

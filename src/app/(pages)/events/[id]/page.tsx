@@ -1,13 +1,12 @@
 "use client";
 
+import showImage from "@/../public/images/showImage.jpg";
 import Events from "@/app/api/events/events";
+import { eventDetails } from "@/app/types/event";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 import Header from "./header";
 import ContentImage from "./contentImage";
-import showImage from "@/../public/images/showImage.jpg";
-import Footer from "./footer";
-import { eventDetails } from "@/app/types/event";
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
 
 type Props = {
   params: {
@@ -18,7 +17,6 @@ type Props = {
 const EventPage = async ({ params }: Props) => {
   const redirect = useRouter();
   const [event, setEvent] = useState<eventDetails>();
-  const [active, setActive] = useState(false);
 
   useEffect(() => {
     const event = Events.getEventById(Number(params.id));
@@ -32,15 +30,16 @@ const EventPage = async ({ params }: Props) => {
       });
   }, [params.id]);
 
-  const handlePath = (path: string) => redirect.push(path);;
-
-  const handleActive = () => setActive(!active);;
+  const handlePath = (path: string) => redirect.push(path);
 
   return (
     <>
-      <Header name={event?.name} handlePath={handlePath} />
-      {event && <ContentImage image={showImage} event={event} />}
-      <Footer active={active} handleActive={handleActive} />
+      {event && (
+        <>
+          <Header name={event?.name} handlePath={handlePath} />
+          <ContentImage image={showImage} event={event} />
+        </>
+      )}
     </>
   );
 };
