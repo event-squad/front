@@ -14,6 +14,7 @@ const Page = () => {
   const redirect = useRouter();
   const [filter, setFilter] = useState("");
   const [events, setEvents] = useState<eventDetails[]>();
+  const [sideBar, setSideBar] = useState(false);
 
   useEffect(() => {
     const event = Events.getEvents();
@@ -26,6 +27,10 @@ const Page = () => {
         console.log(err);
       });
   }, []);
+
+  const handleSideBar = () => {
+    setSideBar(!sideBar);
+  };
 
   const handleClick = (e: any) => {
     const path = e.target.id;
@@ -56,9 +61,11 @@ const Page = () => {
     return redirect.push(`/events/${id}`);
   };
 
+  const handleLogOut = () => redirect.push("/auth/signin")
+
   return (
     <div className="px-6">
-      <Header />
+      <Header active={sideBar} handleSideBar={handleSideBar} handleLogOut={handleLogOut} />
       <SearchBar />
       <Carousel filter={filter} handleFilter={handleFilter} />
       <Feed events={events} handleEvent={handleEvent} />

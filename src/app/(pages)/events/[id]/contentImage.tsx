@@ -13,7 +13,7 @@ const ContentImage = ({ image, event }: Props) => {
       <div className="relative">
         <Image
           priority={true}
-          className="mx-auto top-0 bg-center image-height"
+          className="mx-auto top-0 bg-center image-height md:w-2/4"
           src={image}
           alt="show image"
         />

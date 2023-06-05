@@ -89,6 +89,14 @@
   }
 }
 
+.sidebar-bg {
+  background: linear-gradient(
+    180deg, 
+    #430900 0%, 
+    #2E0F0A 57.81%, 
+    #2E1D18 100%);
+    font-family: 'DM Sans', sans-serif;
+}
 
 .shadow-perso {
   -webkit-box-shadow: 0px 0px 42px -10px rgba(0,0,0,0.75);

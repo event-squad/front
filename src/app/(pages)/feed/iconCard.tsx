@@ -8,10 +8,10 @@ import showImage from "@/../public/images/showImage.jpg";
 import { eventDetails } from "@/app/types/event";
 
 const IconCard = ({ handleEvent, event }: Props) => {
-  const date = event.startDate.toString().split("T")[0]
+  const date = event.startDate.toString().split("T")[0].replace("2023-", "")
 
   return (
-    <div onClick={() => handleEvent(event.id)} className="cursor-pointer relative w-80 h-64 border-radius-feed overflow-hidden">
+    <div onClick={() => handleEvent(event.id)} className="border-solid border-black border-2 cursor-pointer relative w-80 h-64 border-radius-feed overflow-hidden">
       <div className="absolute flex justify-center items-center m-5 w-auto rounded-md h-8 opacity-feed">
         <h1 className="text-xs text-white font-extrabold px-2">{date}</h1>
       </div>
@@ -26,7 +26,7 @@ const IconCard = ({ handleEvent, event }: Props) => {
           <h1>{event.name}</h1>
           <p className="text-xs">{event.description} - {event.city} - {event.state}</p>
         </div>
-        <div className="flex justify-center items-center my-auto w-16 h-8 rounded-xl font-extrabold text-xs text-black bg-white">
+        <div className="flex justify-center items-center my-auto p-2 rounded-xl font-extrabold text-xs text-black bg-white">
           <h1>R$ {event.price}</h1>
         </div>
       </div>

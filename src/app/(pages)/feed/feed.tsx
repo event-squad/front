@@ -9,14 +9,10 @@ import Loading from "./loading";
 
 const Feed = ({ handleEvent, events }: Props) => {
   return (
-    <div className="no-scrollbar scrollbar-hide height pb-aa overflow-scroll flex gap-4 justify-center flex-wrap mt-4 mx-auto">
-      {!events ? (
-        <Loading />
-      ) : (
-        events.map((e) => (
-          <IconCard key={e.id} event={e} handleEvent={handleEvent} />
-        ))
-      )}
+    <div className="flex flex-wrap justify-around no-scrollbar scrollbar-hide height pb-aa overflow-scroll flex gap-4 mt-4 mx-auto">
+      {!events ? <Loading/> : events.map((e) => (
+        <IconCard key={e.id} event={e} handleEvent={handleEvent} />
+      ))}
     </div>
   );
 };

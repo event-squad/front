@@ -32,13 +32,9 @@ const EventPage = async ({ params }: Props) => {
       });
   }, [params.id]);
 
-  const handlePath = (path: string) => {
-    redirect.push(path);
-  };
+  const handlePath = (path: string) => redirect.push(path);;
 
-  const handleActive = () => {
-    setActive(!active);
-  };
+  const handleActive = () => setActive(!active);;
 
   return (
     <>
