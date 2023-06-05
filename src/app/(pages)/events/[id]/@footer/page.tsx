@@ -4,7 +4,7 @@ import IconHeart from "@/app/components/icons/heart";
 import IconHeartFilled from "@/app/components/icons/heartFilled";
 import { useState } from "react";
 
-const Footer = async ({ params }: any) => {
+const Footer = async () => {
   const [active, setActive] = useState(false);
 
   const handleActive = () => {

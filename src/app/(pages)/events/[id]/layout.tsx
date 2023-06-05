@@ -1,12 +1,13 @@
 type Props = {
   children: React.ReactNode;
   footer: React.ReactNode;
+  event: React.ReactNode;
 };
 
 const Layout = (props: Props) => {
   return (
     <>
-      {props.children}
+      {props.event}
       {props.footer}
     </>
   );
