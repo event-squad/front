@@ -12,7 +12,7 @@ import { CategoryType } from "@/app/types/category";
 
 const Feed = async () => {
   const redirect = useRouter();
-  const [events, setEvents] = useState<eventDetails[]>();
+  const [events, setEvents] = useState<eventDetails[]>([]);
   const [filter, setFilter] = useState<CategoryType>();
   const [category, setCategory] = useState<CategoryType[]>();
 
@@ -23,23 +23,30 @@ const Feed = async () => {
       return setFilter(undefined);
     }
 
-    return setFilter(response);
+    const filteredEvents = await Events.filterEvents(id);
+    setFilter(response);
+    setEvents(filteredEvents);
+  };
+
+  const handleEvent = async (idReceived: number) => {
+    const { id } = await Events.getEventById(idReceived);
+
+    return redirect.push(`/events/${id}`);
   };
 
   useEffect(() => {
-    const response = Category.getCategory();
+    const category = Category.getCategory();
+    const events = Events.getEvents();
 
-    response.then((res) => {
-      setCategory(res);
-    }).catch((err) => {
-      console.log(err);
-    })
-  }, []);
+    category
+      .then((res) => {
+        setCategory(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
 
-  useEffect(() => {
-    const response = Events.getEvents();
-
-    response
+    events
       .then((res) => {
         setEvents(res);
       })
@@ -47,12 +54,6 @@ const Feed = async () => {
         console.log(err);
       });
   }, []);
-
-  const handleEvent = async (idReceived: number) => {
-    const { id } = await Events.getEventById(idReceived);
-
-    return redirect.push(`/events/${id}`);
-  };
 
   return (
     <>
@@ -75,7 +76,9 @@ const Feed = async () => {
       </div>
       <div className="flex-wrap justify-around no-scrollbar scrollbar-hide height pb-aa overflow-scroll flex gap-4 mt-4 mx-auto">
         {!events ? (
-          <></>
+          <h1 className="font-extrabold text-white text-2xl mt-4">
+            Nenhum Evento...
+          </h1>
         ) : (
           events.map((e) => (
             <IconCard key={e.id} event={e} handleEvent={handleEvent} />

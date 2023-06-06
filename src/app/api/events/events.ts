@@ -29,9 +29,21 @@ async function getEventById(id: number): Promise<eventDetails> {
   return data;
 }
 
+async function filterEvents(id: number): Promise<eventDetails[]> {
+  const response = await fetch(`${backend}${eventUrl}/filter/${id}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  return [...await response.json()];
+}
+
 const Events = {
   getEvents,
   getEventById,
+  filterEvents
 };
 
 export default Events;
