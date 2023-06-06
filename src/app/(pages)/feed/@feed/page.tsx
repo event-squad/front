@@ -4,35 +4,52 @@ import { eventDetails } from "@/app/types/event";
 import IconCard from "./iconCard";
 import Events from "@/app/api/events/events";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import CarouselIcon from "@/app/components/carouselIcon";
 import IconFlashOutline from "@/app/components/icons/flash";
 import Category from "@/app/api/category/category";
 import { CategoryType } from "@/app/types/category";
+import { SearchContext } from "@/app/components/searchContext";
 
 const Feed = async () => {
   const redirect = useRouter();
   const [events, setEvents] = useState<eventDetails[]>([]);
-  const [filter, setFilter] = useState<CategoryType>();
   const [category, setCategory] = useState<CategoryType[]>();
-
-  const handleFilter = async (id: number) => {
-    const response = await Category.getCategoryById(id);
-
-    if (response.categoryName === filter?.categoryName) {
-      return setFilter(undefined);
-    }
-
-    const filteredEvents = await Events.filterEvents(id);
-    setFilter(response);
-    setEvents(filteredEvents);
-  };
+  const [filter, setFilter] = useState<CategoryType>();
+  const [search, setSearch] = useState("");
+  const context = useContext(SearchContext);
 
   const handleEvent = async (idReceived: number) => {
     const { id } = await Events.getEventById(idReceived);
 
     return redirect.push(`/events/${id}`);
   };
+
+  const handleFilter = async (categoryReceived: CategoryType | undefined) => {
+    if ((categoryReceived && filter) && (categoryReceived.id === filter.id && context === search)) {
+      setFilter(undefined);
+
+      const body = {
+        category: undefined,
+        name: context
+      }
+  
+      const response = await Events.filterEventsByNameOrCategory(body)
+  
+      return setEvents(response);
+    }
+    setSearch(context)
+    setFilter(categoryReceived);
+
+    const body = {
+      category: categoryReceived?.id,
+      name: context
+    }
+
+    const response = await Events.filterEventsByNameOrCategory(body)
+
+    return setEvents(response)
+  }
 
   useEffect(() => {
     const category = Category.getCategory();
@@ -54,6 +71,10 @@ const Feed = async () => {
         console.log(err);
       });
   }, []);
+
+  useEffect(() => {
+    handleFilter(filter)
+  }, [context])
 
   return (
     <>

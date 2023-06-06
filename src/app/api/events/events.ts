@@ -1,4 +1,5 @@
 import { eventDetails } from "@/app/types/event";
+import { Filter } from "@/app/types/filter";
 
 const backend = process.env.NEXT_PUBLIC_HOST;
 const eventUrl = "/api/events";
@@ -40,10 +41,23 @@ async function filterEvents(id: number): Promise<eventDetails[]> {
   return [...await response.json()];
 }
 
+async function filterEventsByNameOrCategory(filter: Filter) {
+  const response = await fetch(`${backend}${eventUrl}/filter`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(filter),
+  });
+
+  return await response.json();
+}
+
 const Events = {
   getEvents,
   getEventById,
-  filterEvents
+  filterEvents,
+  filterEventsByNameOrCategory
 };
 
 export default Events;

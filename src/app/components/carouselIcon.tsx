@@ -3,7 +3,7 @@ import { CategoryType } from "../types/category";
 type Props = {
   text: string;
   icon: JSX.Element;
-  handleFilter: (text: any) => void;
+  handleFilter: (category: CategoryType) => void;
   filter: CategoryType | undefined;
   category: CategoryType;
 };
@@ -11,7 +11,7 @@ type Props = {
 const CarouselIcon = ({ category, filter, handleFilter, icon }: Props) => {
   return (
     <div
-      onClick={() => handleFilter(category.id)}
+      onClick={() => handleFilter(category)}
       className={`cursor-pointer box-border flex mr-4 mt-2 justify-between items-center w-auto rounded-full h-14 ${
         filter?.categoryName === category.categoryName ? "bg-red-500" : "bg-[#613D37]"
       }`}

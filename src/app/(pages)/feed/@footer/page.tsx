@@ -1,9 +1,9 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import Footer from "../../components/footer";
+import Footer from "@/app/components/footer";
 
-const CarouselPage = () => {
+const Page = () => {
   const redirect = useRouter();
 
   const handleClick = (e: any) => {
@@ -20,11 +20,7 @@ const CarouselPage = () => {
     }
   };
 
-  return (
-    <div className="px-6">
-      <Footer active={"home"} handleClick={handleClick} />
-    </div>
-  );
+  return <Footer active={"home"} handleClick={handleClick} />;
 };
 
-export default CarouselPage;
+export default Page;
