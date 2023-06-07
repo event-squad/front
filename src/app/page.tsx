@@ -3,12 +3,14 @@
 import { redirect } from "next/navigation";
 
 const Redirecting = () => {
-  const cookie = localStorage.getItem('token')
-  console.log(cookie)
+  if (typeof window !== "undefined") {
+    const token = localStorage.getItem('token')
 
-  if (cookie) return redirect('/feed')
-
-  return redirect('/auth/signin')
+    if (token) return redirect('/feed')
+  
+    return redirect('/auth/signin')
+  }
+  
 }
 
 export default Redirecting;

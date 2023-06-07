@@ -11,3 +11,9 @@ export type eventDetails = {
  startDate: Date;
  updatedAt: Date;
 }
+
+export type EventLiked = {
+ id: number;
+ userId: number;
+ eventId: number;
+}

@@ -1,15 +1,16 @@
 "use client";
 
-import { eventDetails } from "@/app/types/event";
-import IconCard from "./iconCard";
+
+import Category from "@/app/api/category/category";
 import Events from "@/app/api/events/events";
-import { useRouter } from "next/navigation";
-import { useContext, useEffect, useState } from "react";
 import CarouselIcon from "@/app/components/carouselIcon";
 import IconFlashOutline from "@/app/components/icons/flash";
-import Category from "@/app/api/category/category";
+import IconCard from "./iconCard";
 import { CategoryType } from "@/app/types/category";
-import { SearchContext } from "@/app/components/searchContext";
+import { eventDetails } from "@/app/types/event";
+import { useRouter } from "next/navigation";
+import { useContext, useEffect, useState } from "react";
+import { FeedContext } from "../context/feedContext";
 
 const Feed = async () => {
   const redirect = useRouter();
@@ -17,7 +18,7 @@ const Feed = async () => {
   const [category, setCategory] = useState<CategoryType[]>();
   const [filter, setFilter] = useState<CategoryType>();
   const [search, setSearch] = useState("");
-  const context = useContext(SearchContext);
+  const { textSearch } = useContext(FeedContext);
 
   const handleEvent = async (idReceived: number) => {
     const { id } = await Events.getEventById(idReceived);
@@ -26,24 +27,24 @@ const Feed = async () => {
   };
 
   const handleFilter = async (categoryReceived: CategoryType | undefined) => {
-    if ((categoryReceived && filter) && (categoryReceived.id === filter.id && context === search)) {
+    if ((categoryReceived && filter) && (categoryReceived.id === filter.id && textSearch === search)) {
       setFilter(undefined);
 
       const body = {
         category: undefined,
-        name: context
+        name: textSearch
       }
   
       const response = await Events.filterEventsByNameOrCategory(body)
   
       return setEvents(response);
     }
-    setSearch(context)
+    setSearch(textSearch)
     setFilter(categoryReceived);
 
     const body = {
       category: categoryReceived?.id,
-      name: context
+      name: textSearch
     }
 
     const response = await Events.filterEventsByNameOrCategory(body)
@@ -74,7 +75,7 @@ const Feed = async () => {
 
   useEffect(() => {
     handleFilter(filter)
-  }, [context])
+  }, [textSearch])
 
   return (
     <>
