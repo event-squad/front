@@ -13,18 +13,18 @@ const Footer = ({ active, handleClick }: Props) => {
   <div
    className="flex justify-around items-center w-screen h-24 fixed left-0 bottom-0 footer-bg"
   >
-   <div onClick={handleClick} id='home' className={`cursor-pointer flex justify-center items-center w-14 h-14 rounded-full ${active === "home" && "bg-white"}`}>
+   <button onClick={handleClick} id='home' className={` flex justify-center items-center w-14 h-14 rounded-full ${active === "home" && "bg-white"}`}>
     <IconHome16 id='home' className={`text-3xl ${active === "home" ? "text-red-500" : "text-white"}`} />
-   </div>
-   <div onClick={handleClick} id='map' className={`cursor-pointer flex justify-center items-center w-14 h-14 rounded-full ${active === "map" && "bg-white"}`}>
-    <IconMapMarkerRadiusOutline id='map' className={`text-3xl ${active === "map" ? "text-red-500" : "text-white"}`} />
-   </div>
-   <div onClick={handleClick} id='heart' className={`cursor-pointer flex justify-center items-center w-14 h-14 rounded-full ${active === "heart" && "bg-white"}`}>
+   </button>
+   <button onClick={handleClick} id='map' className={`cursor-pointer flex justify-center items-center w-14 h-14 rounded-full ${active === "map" && "bg-white"}`}>
+    <IconMapMarkerRadiusOutline className={`text-3xl ${active === "map" ? "text-red-500" : "text-white"}`} />
+   </button>
+   <button onClick={handleClick} id='heart' className={`cursor-pointer flex justify-center items-center w-14 h-14 rounded-full ${active === "heart" && "bg-white"}`}>
     <IconHeart id='heart' className={`text-3xl ${active === "heart" ? "text-red-500" : "text-white"}`} />
-   </div>
-   <div onClick={handleClick} id='user' className={`cursor-pointer flex justify-center items-center w-14 h-14 rounded-full ${active === "user" && "bg-white"}`}>
+   </button>
+   <button onClick={handleClick} id='user' className={`cursor-pointer flex justify-center items-center w-14 h-14 rounded-full ${active === "user" && "bg-white"}`}>
     <IconUser id='user' className={`text-3xl ${active === "user" ? "text-red-500" : "text-white"}`} />
-   </div>
+   </button>
   </div>
  )
 }

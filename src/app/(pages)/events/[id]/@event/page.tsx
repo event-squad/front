@@ -1,36 +1,17 @@
 "use client";
 
 import showImage from "@/../public/images/showImage.jpg";
-import Events from "@/app/api/events/events";
-import { eventDetails } from "@/app/types/event";
-import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
 import Header from "./header";
 import ContentImage from "./contentImage";
+import { useRouter } from "next/navigation";
+import { useContext } from "react";
+import { EventContext } from "../context/eventContext";
 
-type Props = {
-  params: {
-    id: string;
-  };
-};
-
-const EventPage = async ({ params }: Props) => {
+const EventPage = async () => {
   const redirect = useRouter();
-  const [event, setEvent] = useState<eventDetails>();
+  const { event } = useContext(EventContext);
 
-  useEffect(() => {
-    const event = Events.getEventById(Number(params.id));
-
-    event
-      .then((res) => {
-        setEvent(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [params.id]);
-
-  const handlePath = (path: string) => redirect.push(path);
+  const handlePath = () => redirect.back();
 
   return (
     <>
