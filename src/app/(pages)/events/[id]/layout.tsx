@@ -9,11 +9,11 @@ type Props = {
   };
 };
 
-import { useEffect, useState } from "react";
+import Events from "@/app/api/events/events";
+import Like from "@/app/api/likes/likes";
+import { SetStateAction, useEffect, useState } from "react";
 import { EventLiked, eventDetails } from "@/app/types/event";
 import { EventContext } from "./context/eventContext";
-import Like from "@/app/api/like/like";
-import Events from "@/app/api/events/events";
 
 const Layout = (props: Props) => {
   const [event, setEvent] = useState<eventDetails>();
@@ -34,10 +34,10 @@ const Layout = (props: Props) => {
         console.log(err);
       });
     likes
-      .then((res) => {
+      .then((res: SetStateAction<EventLiked[] | undefined>) => {
         setLikedEvents(res);
       })
-      .catch((err) => {
+      .catch((err: any) => {
         console.log(err);
       });
   }, [token, props.params.id]);

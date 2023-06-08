@@ -4,7 +4,7 @@ import Footer from "@/app/components/footer";
 import { useRouter } from "next/navigation";
 
 const Page = () => {
-  const redirect = useRouter();
+  const redirect = useRouter()
 
   const handleClick = (e: any) => {
     const path = e.target.id;
@@ -19,8 +19,8 @@ const Page = () => {
         return redirect.push("/feed");
     }
   };
-
-  return <Footer active={"home"} handleClick={handleClick} />;
+  
+  return <Footer active={"heart"} handleClick={handleClick} />;
 };
 
 export default Page;

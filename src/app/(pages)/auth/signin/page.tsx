@@ -26,13 +26,18 @@ const Page = () => {
       const response = await Auth.Login(user);
 
       if (response.status === 409 || response.status === 404) throw new ErrorEvent("error");
-
-      localStorage.setItem('token', await response.text());
+    
+      const token = await response.text();
+      
+      localStorage.clear();
+      localStorage.setItem('token', token);
       return route.push("/feed");
     } catch (err: any) {
+      console.log(err);
       setAlert(true);
       e.target.email.value = "";
       e.target.password.value = "";
+      return;
     }
   };
 

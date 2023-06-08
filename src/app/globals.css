@@ -135,6 +135,14 @@ box-shadow: 0px 0px 42px -10px rgba(0,0,0,0.75);
   height: 62vh;
 }
 
+.heightHeart {
+  height: 80vh;
+}
+
+.pb-bb {
+  padding-bottom: 15vh;
+}
+
 .pb-aa {
   padding-bottom: 15vh;
 }
@@ -142,4 +150,12 @@ box-shadow: 0px 0px 42px -10px rgba(0,0,0,0.75);
 .image-height {
   width: 120vw;
   height: 50vh;
+}
+
+input,
+textarea,
+button,
+select,
+a {
+    -webkit-tap-highlight-color: transparent;
 }

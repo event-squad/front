@@ -5,7 +5,7 @@ import Category from "@/app/api/category/category";
 import Events from "@/app/api/events/events";
 import CarouselIcon from "@/app/components/carouselIcon";
 import IconFlashOutline from "@/app/components/icons/flash";
-import IconCard from "./iconCard";
+import IconCard from "../../../components/iconCard";
 import { CategoryType } from "@/app/types/category";
 import { eventDetails } from "@/app/types/event";
 import { useRouter } from "next/navigation";
@@ -19,6 +19,31 @@ const Feed = async () => {
   const [filter, setFilter] = useState<CategoryType>();
   const [search, setSearch] = useState("");
   const { textSearch } = useContext(FeedContext);
+
+  useEffect(() => {
+    const category = Category.getCategory();
+    const events = Events.getEvents();
+
+    category
+      .then((res) => {
+        setCategory(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    events
+      .then((res) => {
+        setEvents(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  useEffect(() => {
+    handleFilter(filter)
+  }, [textSearch])
 
   const handleEvent = async (idReceived: number) => {
     const { id } = await Events.getEventById(idReceived);
@@ -51,31 +76,6 @@ const Feed = async () => {
 
     return setEvents(response)
   }
-
-  useEffect(() => {
-    const category = Category.getCategory();
-    const events = Events.getEvents();
-
-    category
-      .then((res) => {
-        setCategory(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-
-    events
-      .then((res) => {
-        setEvents(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
-
-  useEffect(() => {
-    handleFilter(filter)
-  }, [textSearch])
 
   return (
     <>
