@@ -1,16 +1,16 @@
-'use client';
+"use client";
 
 import { redirect } from "next/navigation";
+import { useEffect } from "react";
 
 const Redirecting = () => {
-  if (typeof window !== "undefined") {
-    const token = localStorage.getItem('token')
+  useEffect(() => {
+    const token = localStorage.getItem("token");
 
-    if (token) return redirect('/feed')
-  
-    return redirect('/auth/signin')
-  }
-  
-}
+    if (token) return redirect("/feed");
+
+    return redirect("/auth/signin");
+  }, []);
+};
 
 export default Redirecting;
