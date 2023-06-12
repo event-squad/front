@@ -5,7 +5,6 @@ type Props = {
 
 import IconHeart from "@/app/components/icons/heart";
 import IconHome16 from "@/app/components/icons/home";
-import IconMapMarkerRadiusOutline from "@/app/components/icons/map";
 import IconUser from "@/app/components/icons/user";
 
 const Footer = ({ active, handleClick }: Props) => {
@@ -15,9 +14,6 @@ const Footer = ({ active, handleClick }: Props) => {
   >
    <button onClick={handleClick} id='home' className={` flex justify-center items-center w-14 h-14 rounded-full ${active === "home" && "bg-white"}`}>
     <IconHome16 id='home' className={`text-3xl ${active === "home" ? "text-red-500" : "text-white"}`} />
-   </button>
-   <button onClick={handleClick} id='map' className={`cursor-pointer flex justify-center items-center w-14 h-14 rounded-full ${active === "map" && "bg-white"}`}>
-    <IconMapMarkerRadiusOutline className={`text-3xl ${active === "map" ? "text-red-500" : "text-white"}`} />
    </button>
    <button onClick={handleClick} id='heart' className={`cursor-pointer flex justify-center items-center w-14 h-14 rounded-full ${active === "heart" && "bg-white"}`}>
     <IconHeart id='heart' className={`text-3xl ${active === "heart" ? "text-red-500" : "text-white"}`} />

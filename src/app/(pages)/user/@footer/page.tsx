@@ -20,7 +20,7 @@ const Page = () => {
     }
   };
   
-  return <Footer active={"heart"} handleClick={handleClick} />;
+  return <Footer active={"user"} handleClick={handleClick} />;
 };
 
 export default Page;

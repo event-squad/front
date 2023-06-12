@@ -13,7 +13,7 @@ const Page = () => {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    if (!token) return;
+    if (!token) return redirect.push('/auth/signin');
     const response = Like.getLikedEvents(token);
 
     response
