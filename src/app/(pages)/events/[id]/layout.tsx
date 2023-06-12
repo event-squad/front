@@ -14,12 +14,14 @@ import Like from "@/app/api/likes/likes";
 import { SetStateAction, useEffect, useState } from "react";
 import { EventLiked, eventDetails } from "@/app/types/event";
 import { EventContext } from "./context/eventContext";
+import { useRouter } from "next/navigation";
 
 const Layout = (props: Props) => {
   const [event, setEvent] = useState<eventDetails>();
   const [likedEvents, setLikedEvents] = useState<EventLiked[]>();
   const [active, setActive] = useState(false);
   const [token, setToken] = useState<string | null>();
+  const redirect = useRouter();
 
   useEffect(() => {
     if (!token) return setToken(localStorage.getItem("token"));
@@ -31,14 +33,18 @@ const Layout = (props: Props) => {
         setEvent(res);
       })
       .catch((err) => {
-        console.log(err);
+        redirect.push('/feed')
       });
     likes
-      .then((res: SetStateAction<EventLiked[] | undefined>) => {
+      .then((res: any) => {
+        if (res.message === 'Unauthorized token') {
+          return redirect.push('/auth/signin');
+        }
         setLikedEvents(res);
       })
       .catch((err: any) => {
         console.log(err);
+        redirect.push('/auth/signin');
       });
   }, [token, props.params.id]);
 

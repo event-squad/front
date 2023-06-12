@@ -16,7 +16,7 @@ async function getLikes(token: string): Promise<EventLiked[]> {
 }
 
 async function dislikeEvent(token: string, eventId: number) {
-  await fetch(`${backendUrl}${likeUrl}/${eventId}`, {
+  await fetch(`${backendUrl}${likeUrl}/${Number(eventId)}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
