@@ -1,15 +1,15 @@
 type Props = {
- handleSideBar: () => void;
-
-}
+  handleSideBar: () => void;
+  addressDetails: Address | undefined;
+};
 
 import IconMenuLeft from "@/app/components/icons/bars";
 import Img from "next/image";
-import { profile } from "console";
 import mapSvg from "@/../public/images/map-marker-svgrepo-com.svg";
 import fotoPerfil from "@/../public/images/profile-picture.webp";
+import { Address } from "@/app/types/cep";
 
-const MainHeader = ({ handleSideBar }: Props) => {
+const MainHeader = ({ handleSideBar, addressDetails }: Props) => {
   return (
     <div className="flex items-center justify-between mt-4">
       <div
@@ -20,7 +20,7 @@ const MainHeader = ({ handleSideBar }: Props) => {
       </div>
       <div className="flex">
         <Img className="w-4 mr-1" src={mapSvg} alt="map_svg" />
-        <h1 className="text-white text-1xl font-extrabold">São Paulo, SP</h1>
+        <h1 className="text-white text-1xl font-extrabold">{!addressDetails ? "São Paulo, SP" : addressDetails.uf + ", " + addressDetails.localidade}</h1>
       </div>
       <div className="flex justify-center items-center main-bg rounded-full w-12">
         <Img
