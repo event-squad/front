@@ -1,12 +1,12 @@
 type Props = {
- children: React.ReactNode
+ cep: React.ReactNode
  footer: React.ReactNode
 }
 
-const Layout = ({ children, footer }: Props) => {
+const Layout = ({ cep, footer }: Props) => {
  return(
   <>
-   {children}
+   {cep}
    {footer}
   </>
  )
