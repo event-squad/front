@@ -16,7 +16,7 @@ const Page = () => {
       case "heart":
         return redirect.push("/heart");
       case "user":
-        return redirect.push("/feed");
+        return redirect.push("/user");
     }
   };
 
